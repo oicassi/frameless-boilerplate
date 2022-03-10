@@ -82,6 +82,19 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         type: 'asset',
+        exclude: /node_modules/,
+      },
+
+      {
+        test: /\.(glsl|frag|vert)$/,
+        loader: 'raw-loader',
+        exclude: /node_modules/,
+      },
+
+      {
+        test: /\.(gsls|frag|vert)$/,
+        loader: 'glslify-loader',
+        exclude: /node_modules/,
       },
     ],
   },
