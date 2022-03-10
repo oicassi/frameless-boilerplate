@@ -95,7 +95,7 @@ module.exports = {
             plugins: [
               ['gifsicle', { interlaced: true }],
               ['jpegtran', { progressive: true }],
-              ['optipng', { optimizationLevel: 5 }],
+              ['optipng', { optimizationLevel: 7 }],
             ],
           },
         },
