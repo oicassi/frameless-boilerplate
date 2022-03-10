@@ -1,26 +1,29 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
-const IS_DEVELOPMENT = process.env.NODE_ENV === 'dev';
+const IS_DEVELOPMENT = process.env.NODE_ENV === 'dev'
 
-const dirApp = path.join(__dirname, 'app');
-const dirStyles = path.join(__dirname, 'styles');
-const dirNode = 'node_modules';
+const dirApp = path.join(__dirname, 'app')
+const dirStyles = path.join(__dirname, 'styles')
+const dirNode = 'node_modules'
 
 module.exports = {
-  entry: [path.join(dirApp, 'index.js'), path.join(dirStyles, 'index.scss')],
+  entry: [
+    path.join(dirApp, 'index.js'),
+    path.join(dirStyles, 'index.scss')
+  ],
 
   resolve: {
-    modules: [dirApp, dirNode],
+    modules: [dirApp, dirNode]
   },
 
   plugins: [
     new webpack.DefinePlugin({
-      IS_DEVELOPMENT,
+      IS_DEVELOPMENT
     }),
 
     new CopyWebpackPlugin({
@@ -28,15 +31,15 @@ module.exports = {
         {
           from: './shared',
           to: '',
-          noErrorOnMissing: true,
-        },
-      ],
+          noErrorOnMissing: true
+        }
+      ]
     }),
 
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
+      chunkFilename: '[id].css'
+    })
   ],
 
   module: {
@@ -44,8 +47,8 @@ module.exports = {
       {
         test: /\.js$/,
         use: {
-          loader: 'babel-loader',
-        },
+          loader: 'babel-loader'
+        }
       },
 
       {
@@ -54,49 +57,49 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '',
-            },
+              publicPath: ''
+            }
           },
           {
-            loader: 'css-loader',
+            loader: 'css-loader'
           },
           {
-            loader: 'postcss-loader',
+            loader: 'postcss-loader'
           },
           {
-            loader: 'sass-loader',
-          },
-        ],
+            loader: 'sass-loader'
+          }
+        ]
       },
 
       {
         test: /\.(jpe?g|png|gif|svg|woff2?|fnt|webp)$/,
         loader: 'file-loader',
         options: {
-          name(file) {
-            return '[hash].[ext]';
-          },
-        },
+          name (file) {
+            return '[hash].[ext]'
+          }
+        }
       },
 
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         type: 'asset',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
 
       {
         test: /\.(glsl|frag|vert)$/,
         loader: 'raw-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
 
       {
         test: /\.(gsls|frag|vert)$/,
         loader: 'glslify-loader',
-        exclude: /node_modules/,
-      },
-    ],
+        exclude: /node_modules/
+      }
+    ]
   },
 
   optimization: {
@@ -108,11 +111,11 @@ module.exports = {
             plugins: [
               ['gifsicle', { interlaced: true }],
               ['jpegtran', { progressive: true }],
-              ['optipng', { optimizationLevel: 7 }],
-            ],
-          },
-        },
-      }),
-    ],
-  },
-};
+              ['optipng', { optimizationLevel: 7 }]
+            ]
+          }
+        }
+      })
+    ]
+  }
+}
