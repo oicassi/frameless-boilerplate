@@ -13,3 +13,6 @@ npm-debug.log
 
 # Env.
 .env
+
+# Public
+public/
