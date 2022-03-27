@@ -2,9 +2,13 @@
   "name": "frameless-boilerplate",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --progress --config webpack.config.build.js",
-    "development": "webpack serve --progress --config webpack.config.development.js",
-    "start": "npm run development"
+    "frontend:build": "webpack --progress --config webpack.config.build.js",
+    "frontend:development": "webpack serve --progress --config webpack.config.development.js",
+    "backend:build": "node app.js",
+    "backend:development": "nodemon app.js",
+    "start:frontend": "npm run frontend:development",
+    "start:backend": "npm run backend:development",
+    "start": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\""
   },
   "author": "Cassiano Kruchelski Vidal",
   "devDependencies": {
@@ -34,5 +38,8 @@
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
   }
 }
