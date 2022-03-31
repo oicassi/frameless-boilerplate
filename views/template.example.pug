@@ -40,10 +40,12 @@ html(lang="en")
 
     link(href="main.css" rel="stylesheet")
   body
-    h1 Hello hello hellooo
-
-    //- Including a partial
+    //- Including some partials
     include ./partials/preloader.example
+    include ./partials/navigation.example
+
+    .content#content(data-template=template)
+      block content
 
 //- This is an example template for building pages
 //- All the data, like description and title can be fetched from the backend
