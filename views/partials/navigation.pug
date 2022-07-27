@@ -1,14 +1,11 @@
 nav.navigation
   .navigation__wrapper
-    a.navigation__link(href="/")
-      | LOGO
+    a.navigation__link(href="/")=meta.data.title
 
-    //- Maybe some icon
-    svg.navigation__link__icon
+      svg.navigation__link__icon
 
-    //- Example of navigation
     ul.navigation__list
-      li.navigation__list__item
-        a.navigation__list__link(href="/about") About
-      li.navigation__list__item
-        a.navigation__list__link(href="/contact") Contact
+      each item in navigation.data.list
+
+        li.navigation__list__item
+          a.navigation__list__link(href=Link(item.link))=item.text
