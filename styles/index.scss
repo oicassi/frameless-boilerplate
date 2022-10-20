@@ -1,13 +1,15 @@
 // first all of this utils and base stuff so the variables, functions and mixins can be
 // used by the subsequent classes
 
-@import './utils/variables.scss';
-@import './utils/functions.scss';
-@import './utils/mixins.scss';
-@import './utils/vendors.scss';
+@import './utils/variables';
+@import './utils/functions';
+@import './utils/mixins';
+@import './utils/vendors';
 
-@import './base//reset.scss';
+@import './base//fonts';
+@import './base//reset';
+@import './base//base';
 
-@import './pages/about/about.scss';
-@import './pages/contact/contact.scss';
-@import './pages/home/home.scss';
+@import './pages/about/about';
+@import './pages/contact/contact';
+@import './pages/home/home';
