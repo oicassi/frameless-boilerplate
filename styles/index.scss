@@ -6,9 +6,13 @@
 @import './utils/mixins';
 @import './utils/vendors';
 
-@import './base//fonts';
-@import './base//reset';
-@import './base//base';
+@import './base/fonts';
+
+@import './mixins/titles';
+@import './mixins/descriptions';
+
+@import './base/reset';
+@import './base/base';
 
 @import './pages/about/about';
 @import './pages/contact/contact';
